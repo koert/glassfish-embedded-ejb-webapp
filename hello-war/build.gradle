@@ -1,7 +1,14 @@
 apply plugin: 'war'
+apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+
+dependencies {
+    providedCompile(project(path: ':hello-ejb'))
+//    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile libraries.glassfishEmbedded
+}
 
 idea {
     module{
@@ -10,20 +17,5 @@ idea {
         testOutputDir = compileTestJava.destinationDir
     }
 }
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    providedCompile(project(path: ':hello-ejb'))
-    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-    compile libraries.glassfishEmbedded
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
-}
-
 
 

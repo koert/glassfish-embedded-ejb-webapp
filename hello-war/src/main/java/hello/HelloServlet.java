@@ -21,7 +21,11 @@ public class HelloServlet extends HttpServlet {
     public void doGet (HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         PrintWriter out = res.getWriter();
-        out.println("Hello, world!");
+        if (helloRepository == null) {
+            out.println("Hello, world!");
+        } else {
+            out.println("Hello EJB: " + helloRepository.hello("world"));
+        }
         out.close();
     }
 }

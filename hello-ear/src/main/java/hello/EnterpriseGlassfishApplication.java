@@ -77,23 +77,13 @@ public class EnterpriseGlassfishApplication {
             ejbModule.addClassPath(new File("hello-ejb/build/classes/main"));
             enterpriseArchive.addArchive(ejbModule.toURI(), "hello-ejb.jar");
 
-            // src/application.xml is my META-INF/application.xml
-            enterpriseArchive.addMetadata(new File("hello-ear/src/main/resources/application.xml"), "application.xml");
-//            enterpriseArchive.addMetadata(new File("glassfish-embedded-ear/hello-war/src/main/resources/glassfish-resources.xml"));
-            // Add scattered web module to the scattered enterprise archive.
-            // src/application.xml references Web module as "scattered.war".
-            //Hence specify the name while adding the archive.
+            enterpriseArchive.addMetadata(new File("hello-ear/src/main/glassfish/application.xml"), "application.xml");
+//            enterpriseArchive.addMetadata(new File("glassfish-embedded-ear/hello-war/src/main/glassfish/glassfish-resources.xml"));
             ScatteredArchive webModule = new ScatteredArchive("helloweb", ScatteredArchive.Type.WAR,
                     new File("hello-war/src/main/webapp"));
+            webModule.addClassPath(new File("hello-war/build/classes/main"));
             webModule.addMetadata(new File("hello-war/src/main/resources/web.xml"));
             enterpriseArchive.addArchive(webModule.toURI(), "hello.war");
-            // lib/mylibrary.jar is a library JAR file.
-            //enterpriseArchive.addArchive(new File("lib", "mylibrary.jar"));
-            // target/ejbclasses contain my compiled EJB module.
-            // src/application.xml references EJB module as "ejb.jar".
-            //Hence specify the name while adding the archive.
-            //enterpriseArchive.addArchive(new File("target", "ejbclasses"), "ejb.jar");
-
 
             String appName = deployer.deploy(enterpriseArchive.toURI());
         } catch (GlassFishException e) {

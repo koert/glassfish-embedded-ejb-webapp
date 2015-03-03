@@ -5,8 +5,8 @@
     <display-name>hello-ear</display-name>
     <module>
         <web>
-            <web-uri>hello.war</web-uri>
-            <context-root>/hello2</context-root>
+            <web-uri>hello-war.war</web-uri>
+            <context-root>/hello</context-root>
         </web>
     </module>
     <module>

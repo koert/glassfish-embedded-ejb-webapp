@@ -19,14 +19,17 @@ idea {
 
 dependencies {
     //following dependencies will become the ear modules and placed in the ear root
-    deploy project(path: ':hello-war')
-    deploy project(path: ':hello-ejb')
+    deploy project(path: ':hello-war', configuration: 'archives')
+    deploy project(path: ':hello-ejb', transitive: false)
 }
 
 ear {
+    // dependsOn project(':hello-war').war
+
     deploymentDescriptor {
         applicationName = "hello"
         displayName = "hello-ear"
         description = "Hello application"
+        //webModule(project(":hello-war"), "/hello")
     }
 }
