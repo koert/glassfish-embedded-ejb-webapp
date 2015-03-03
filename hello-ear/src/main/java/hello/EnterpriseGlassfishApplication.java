@@ -74,18 +74,18 @@ public class EnterpriseGlassfishApplication {
             ScatteredEnterpriseArchive enterpriseArchive = new ScatteredEnterpriseArchive("testapp");
 
             ScatteredArchive ejbModule = new ScatteredArchive("hello-ejb", ScatteredArchive.Type.JAR);
-            ejbModule.addClassPath(new File("glassfish-embedded-ejb-webapp/build/classes/main"));
+            ejbModule.addClassPath(new File("glassfish-embedded-ear/hello-ejb/build/classes/main"));
             enterpriseArchive.addArchive(ejbModule.toURI(), "hello-ejb.jar");
 
             // src/application.xml is my META-INF/application.xml
-            enterpriseArchive.addMetadata(new File("glassfish-embedded-ejb-webapp/src/main/resources/application.xml"), "application.xml");
+            enterpriseArchive.addMetadata(new File("glassfish-embedded-ear/hello-ear/src/main/resources/application.xml"), "application.xml");
+//            enterpriseArchive.addMetadata(new File("glassfish-embedded-ear/hello-war/src/main/resources/glassfish-resources.xml"));
             // Add scattered web module to the scattered enterprise archive.
             // src/application.xml references Web module as "scattered.war".
             //Hence specify the name while adding the archive.
             ScatteredArchive webModule = new ScatteredArchive("helloweb", ScatteredArchive.Type.WAR,
-                    new File("glassfish-embedded-ejb-webapp/src/main/webapp"));
-            webModule.addMetadata(new File("glassfish-embedded-ejb-webapp/src/main/resources/web.xml"));
-            webModule.addMetadata(new File("glassfish-embedded-ejb-webapp/src/main/resources/glassfish-resources.xml"));
+                    new File("glassfish-embedded-ear/hello-war/src/main/webapp"));
+            webModule.addMetadata(new File("glassfish-embedded-ear/hello-war/src/main/resources/web.xml"));
             enterpriseArchive.addArchive(webModule.toURI(), "hello.war");
             // lib/mylibrary.jar is a library JAR file.
             //enterpriseArchive.addArchive(new File("lib", "mylibrary.jar"));

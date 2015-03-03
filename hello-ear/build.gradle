@@ -1,0 +1,33 @@
+apply plugin: 'ear'
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+dependencies {
+    compile 'org.glassfish.main.extras:glassfish-embedded-all:4.1'
+
+}
+
+
+idea {
+    module{
+        inheritOutputDirs = false
+        outputDir = compileJava.destinationDir
+        testOutputDir = compileTestJava.destinationDir
+    }
+}
+
+dependencies {
+    //following dependencies will become the ear modules and placed in the ear root
+    deploy project(path: ':hello-war')
+    deploy project(path: ':hello-ejb')
+}
+
+ear {
+    deploymentDescriptor {
+        applicationName = "hello"
+        displayName = "hello-ear"
+        description = "Hello application"
+    }
+}

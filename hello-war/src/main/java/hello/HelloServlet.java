@@ -13,15 +13,15 @@ import java.io.PrintWriter;
  * Hello world servlet.
  * @author Koert Zeilstra
  */
-@WebServlet("/hello")
+@WebServlet(name="hello", urlPatterns = {"/hello"})
 public class HelloServlet extends HttpServlet {
 
-    @EJB private HelloRepository helloRepository;
+    @EJB HelloRepository helloRepository;
 
-    @Override
-    public void doGet (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void doGet (HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
         PrintWriter out = res.getWriter();
-        out.println(helloRepository.hello("world"));
+        out.println("Hello, world!");
         out.close();
     }
 }
