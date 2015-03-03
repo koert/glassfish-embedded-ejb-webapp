@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN" "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+    <jdbc-connection-pool datasource-classname="oracle.jdbc.pool.OracleDataSource" res-type="javax.sql.DataSource" steady-pool-size="2" name="TestPool">
+        <property name="User" value="testuser"></property>
+        <property name="Password" value="password"></property>
+        <property name="DataSourceName" value="OracleDataSource"></property>
+        <property name="ExplicitCachingEnabled" value="false"></property>
+        <property name="MaxStatements" value="0"></property>
+        <property name="NetworkProtocol" value="tcp"></property>
+        <property name="ImplicitCachingEnabled" value="false"></property>
+        <property name="URL" value="jdbc:oracle:thin:@odb01:1521:prd001"></property>
+        <property name="PortNumber" value="0"></property>
+        <property name="LoginTimeout" value="0"></property>
+    </jdbc-connection-pool>
+    <jdbc-resource pool-name="TestPool" jndi-name="jdbc/Test"></jdbc-resource>
+
+</resources>

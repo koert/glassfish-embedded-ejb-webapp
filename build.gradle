@@ -1,0 +1,30 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+idea {
+    module{
+        inheritOutputDirs = false
+        outputDir = compileJava.destinationDir
+        testOutputDir = compileTestJava.destinationDir
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'org.glassfish.main.extras:glassfish-embedded-all:4.1'
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
+
+
+

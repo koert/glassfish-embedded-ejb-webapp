@@ -1,0 +1,10 @@
+glassfish-embedded-ejb-webapp
+=========================
+
+Example setup of embedded Glassfish server with Hello world servlet and EJB stateless session bean.
+
+Start the hello.EnterpriseGlassfishApplication class as a standalone application.
+
+The Glassfish documentation: https://glassfish.java.net/docs/4.0/embedded-server-guide.pdf
+
+
