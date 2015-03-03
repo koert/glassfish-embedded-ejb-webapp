@@ -5,8 +5,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 
 dependencies {
-    compile 'org.glassfish.main.extras:glassfish-embedded-all:4.1'
-
+    compile libraries.glassfishEmbedded
 }
 
 

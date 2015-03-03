@@ -1,5 +1,6 @@
 
 ext.libraries = [
+        glassfishEmbedded: 'org.glassfish.main.extras:glassfish-embedded-all:4.1',
         oracleJdbc: "com.oracle:ojdbc6:6@jar",
         servletApi: "javax.servlet:servlet-api:2.5",
         servletApi3: "javax.servlet:javax.servlet-api:3.1.0",
